@@ -19,4 +19,15 @@
       {{ nutrient.potassium }}
     </label>
   </div>
+  <input #searchGyms>
+  <button (click)="findGyms(searchGyms.value)">Acca</button>
+  <div>
+    <label *ngFor="let gym of gyms">
+      {{ gym.name }}
+      {{ gym.city }}
+      {{ gym.zipCode }}
+      {{ gym.address }}
+      {{ gym.url }}
+    </label>
+  </div>
 </div>
