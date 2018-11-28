@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>Workout</groupId>
-    <artifactId>NetflixAndChill</artifactId>
+    <artifactId>Workout</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Netflix and Chill</name>
+    <name>Workout</name>
 
     <properties>
         <version.java>1.8</version.java>
@@ -18,7 +18,7 @@
     </properties>
 
     <build>
-        <finalName>NetflixAndChill</finalName>
+        <finalName>Workout</finalName>
         <sourceDirectory>src/main/java</sourceDirectory>
 
         <plugins>
