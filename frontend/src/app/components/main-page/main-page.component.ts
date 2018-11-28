@@ -4,8 +4,8 @@ import { NutrientService } from "../../services/nutrient/nutrient.service";
 import { Nutrient } from "../../models/Nutrient";
 import { Gym } from "../../models/Gym";
 import { GymService } from "../../services/gym/gym.service";
-import {Workout} from "../../models/Workout";
-import {WorkoutService} from "../../services/workout/workout.service";
+import { Workout } from "../../models/Workout";
+import { WorkoutService } from "../../services/workout/workout.service";
 
 @Component({
   selector: 'app-main-page',
@@ -28,14 +28,15 @@ export class MainPageComponent implements OnInit {
   calculateNutrients(nutrient: string, serving: string) {
     this.nutrientService.calculateNutrients(nutrient, serving)
       .subscribe(nutrition => {
-        this.nutrition = nutrition;
         console.log(nutrition);
+        this.nutrition = nutrition;
       });
   }
 
   findGyms(gym: string) {
     this.gymService.findGyms(gym)
       .subscribe(gyms => {
+        console.log(gyms);
         this.gyms = gyms;
       });
   }
@@ -43,6 +44,7 @@ export class MainPageComponent implements OnInit {
   getWorkouts() {
     this.workoutService.getWorkout()
       .subscribe(workouts => {
+        console.log(workouts);
         this.workouts = workouts;
       });
   }

@@ -9,19 +9,32 @@
   <button (click)="calculateNutrients(searchNutirent.value, nutrientServing.value)">Muta</button>
   <div>
     <label *ngFor="let nutrient of nutrition">
-      {{ nutrient.foodName }}
-      {{ nutrient.servingQuantity }}
-      {{ nutrient.servingWeight }}
-      {{ nutrient.calories }}
-      {{ nutrient.totalFat }}
-      {{ nutrient.saturatedFat }}
-      {{ nutrient.cholesterol }}
-      {{ nutrient.sodium }}
-      {{ nutrient.totalCarbohydrate }}
-      {{ nutrient.fiber }}
-      {{ nutrient.sugar }}
-      {{ nutrient.protein }}
-      {{ nutrient.potassium }}
+      Food name:
+      {{ nutrient.food_name }}
+      Serving quantity:
+      {{ nutrient.serving_qty }}
+      Serving weight in grams:
+      {{ nutrient.serving_weight_grams }}
+      Calories:
+      {{ nutrient.nf_calories }}
+      Total fat:
+      {{ nutrient.nf_total_fat }}
+      Saturated fat:
+      {{ nutrient.nf_saturated_fat }}
+      Cholesterol:
+      {{ nutrient.nf_cholesterol }}
+      Sodium:
+      {{ nutrient.nf_sodium }}
+      Carbohydrate:
+      {{ nutrient.nf_total_carbohydrate }}
+      Fiber:
+      {{ nutrient.nf_dietary_fiber }}
+      Sugar:
+      {{ nutrient.nf_sugars }}
+      Protein:
+      {{ nutrient.nf_protein }}
+      Potassium:
+      {{ nutrient.nf_potassium }}
     </label>
   </div>
   <div>
@@ -30,23 +43,32 @@
   </div>
   <button (click)="findGyms(searchGyms.value)">Acca</button>
   <div>
-    <label *ngFor="let gym of gyms">
+    <div *ngFor="let gym of gyms">
+      Gym name:
       {{ gym.name }}
+      City:
       {{ gym.city }}
+      Zip code:
       {{ gym.zipCode }}
+      Address:
       {{ gym.address }}
+      Web page:
       {{ gym.url }}
-    </label>
+    </div>
   </div>
   <div>
     <button (click)="getWorkouts()">Get workouts</button>
-    <label *ngFor="let workout of workouts">
+    <div *ngFor="let workout of workouts">
+      Workout:
       {{ workout.name }}
+      Day:
       {{ workout.day}}
+      Description:
       {{ workout.description }}
-      <label *ngFor="let excercise of workout.excercises">
-        {{ excercise }}
+      Exercises:
+      <label *ngFor="let exercise of workout.exercises">
+        {{ exercise }}
       </label>
-    </label>
+    </div>
   </div>
 </div>

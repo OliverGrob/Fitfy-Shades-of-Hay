@@ -3,7 +3,7 @@ export class Workout {
   id: number;
   name: string;
   description: string;
-  excercises: string[];
+  exercises: string[];
   day: string;
 
 }

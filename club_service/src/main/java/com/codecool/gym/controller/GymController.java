@@ -18,4 +18,5 @@ public class GymController {
     public List<Gym> getGymByName(@RequestParam("gym") String substring) {
         return service.findGymByName(substring);
     }
+
 }
