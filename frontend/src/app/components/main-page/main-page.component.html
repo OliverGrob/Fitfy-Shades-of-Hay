@@ -1,0 +1,52 @@
+<div>
+  <h1>Dirr geco!!</h1>
+  <div>
+    <label>Nutrient</label>
+    <input #searchNutirent>
+    <label>Serving</label>
+    <input #nutrientServing>
+  </div>
+  <button (click)="calculateNutrients(searchNutirent.value, nutrientServing.value)">Muta</button>
+  <div>
+    <label *ngFor="let nutrient of nutrition">
+      {{ nutrient.foodName }}
+      {{ nutrient.servingQuantity }}
+      {{ nutrient.servingWeight }}
+      {{ nutrient.calories }}
+      {{ nutrient.totalFat }}
+      {{ nutrient.saturatedFat }}
+      {{ nutrient.cholesterol }}
+      {{ nutrient.sodium }}
+      {{ nutrient.totalCarbohydrate }}
+      {{ nutrient.fiber }}
+      {{ nutrient.sugar }}
+      {{ nutrient.protein }}
+      {{ nutrient.potassium }}
+    </label>
+  </div>
+  <div>
+    <label>Gym</label>
+    <input #searchGyms>
+  </div>
+  <button (click)="findGyms(searchGyms.value)">Acca</button>
+  <div>
+    <label *ngFor="let gym of gyms">
+      {{ gym.name }}
+      {{ gym.city }}
+      {{ gym.zipCode }}
+      {{ gym.address }}
+      {{ gym.url }}
+    </label>
+  </div>
+  <div>
+    <button (click)="getWorkouts()">Get workouts</button>
+    <label *ngFor="let workout of workouts">
+      {{ workout.name }}
+      {{ workout.day}}
+      {{ workout.description }}
+      <label *ngFor="let excercise of workout.excercises">
+        {{ excercise }}
+      </label>
+    </label>
+  </div>
+</div>
