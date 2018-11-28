@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-//@CrossOrigin
 public class NutritionController {
 
     @Autowired
@@ -23,4 +22,5 @@ public class NutritionController {
         String meal = requestBody.get("meal");
         return nutritionService.getNutritionData(serving, meal);
     }
+
 }
