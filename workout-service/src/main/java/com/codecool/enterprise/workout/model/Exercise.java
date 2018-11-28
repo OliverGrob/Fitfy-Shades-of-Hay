@@ -1,5 +1,14 @@
 package com.codecool.enterprise.workout.model;
 
 public enum Exercise {
-    PULLUP
+    PULLUPS,
+    SQUATS,
+    PLANKING,
+    CRUNCHES,
+    SITUPS,
+    WALKING,
+    RUNNING,
+    CYCLING,
+    INTERVAL,
+    LUNGES,
 }
