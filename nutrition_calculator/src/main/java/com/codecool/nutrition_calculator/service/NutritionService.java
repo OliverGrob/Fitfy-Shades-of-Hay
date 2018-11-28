@@ -25,9 +25,8 @@ public class NutritionService {
     @Value("${nutritionURL}")
     private String nutritionURL;
 
-    public List<NutritionData> getNutritionData() {
-
-        String json = "{\"query\":\"for breakfast i ate 2 eggs, bacon, and french toast\", \"timezone\": \"US/Eastern\"}";
+    public void searchNutritionData(String serving, String meal) {
+        String json = "{\"query\":\""  + serving + " " + meal + "\"}" ;
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("Content-Type", "application/json");
@@ -35,9 +34,15 @@ public class NutritionService {
         headers.set("x-app-key", "4394ea6d29720b1901b61abb346c733c");
         HttpEntity<String> entity = new HttpEntity<>(json, headers);
 
+        System.out.println(json);
         List<NutritionData> response = restTemplate.exchange(
                 nutritionURL, HttpMethod.POST, entity, Foods.class).getBody().getFoods();
         response.forEach(nutritionData -> nutritionRepository.save(nutritionData));
-        return response;
+    }
+
+    public List<NutritionData> getNutritionData(String serving, String meal) {
+        searchNutritionData(serving, meal);
+        System.out.println(nutritionRepository.findByFoodName(meal));
+        return nutritionRepository.findByFoodName(meal);
     }
 }
