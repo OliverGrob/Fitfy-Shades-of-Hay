@@ -1,0 +1,22 @@
+<div>
+  <h1>Dirr geco!!</h1>
+  <input #searchNutirent>
+  <button (click)="calculateNutrients(searchNutirent.value)">Muta</button>
+  <div>
+    <label *ngFor="let nutrient of nutrition">
+      {{ nutrient.foodName }}
+      {{ nutrient.servingQuantity }}
+      {{ nutrient.servingWeight }}
+      {{ nutrient.calories }}
+      {{ nutrient.totalFat }}
+      {{ nutrient.saturatedFat }}
+      {{ nutrient.cholesterol }}
+      {{ nutrient.sodium }}
+      {{ nutrient.totalCarbohydrate }}
+      {{ nutrient.fiber }}
+      {{ nutrient.sugar }}
+      {{ nutrient.protein }}
+      {{ nutrient.potassium }}
+    </label>
+  </div>
+</div>
