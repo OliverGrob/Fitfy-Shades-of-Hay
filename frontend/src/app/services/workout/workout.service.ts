@@ -4,7 +4,8 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { of } from "rxjs/internal/observable/of";
 import { catchError, tap } from "rxjs/operators";
 import { Observable } from "rxjs/internal/Observable";
-import {Workout} from "../../models/Workout";
+
+import { Workout } from "../../models/Workout";
 
 @Injectable({
   providedIn: 'root'

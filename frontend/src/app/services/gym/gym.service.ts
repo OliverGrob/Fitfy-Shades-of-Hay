@@ -17,7 +17,7 @@ export class GymService {
   constructor(private http: HttpClient) { }
 
   findGyms(gym: string): Observable<Gym[]> {
-    return this.http.post<any>(`${this.baseGymUrl}`, {'gym': gym})
+    return this.http.get<any>(`${this.baseGymUrl}/search?gym=${gym}`)
       .pipe(
         tap(_ => console.log(`Gyms found`)),
         catchError(response => this.handleError(response))

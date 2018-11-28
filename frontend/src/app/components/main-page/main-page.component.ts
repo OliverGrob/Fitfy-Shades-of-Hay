@@ -29,6 +29,7 @@ export class MainPageComponent implements OnInit {
     this.nutrientService.calculateNutrients(nutrient, serving)
       .subscribe(nutrition => {
         this.nutrition = nutrition;
+        console.log(nutrition);
       });
   }
 
