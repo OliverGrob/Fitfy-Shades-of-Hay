@@ -1,4 +1,4 @@
-package com.codecool.enterprise.avatar.model;
+package com.codecool.enterprise.workout.model;
 
 public enum Day {
     MONDAY,

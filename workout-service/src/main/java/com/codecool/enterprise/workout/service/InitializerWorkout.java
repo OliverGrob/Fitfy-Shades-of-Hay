@@ -1,9 +1,9 @@
-package com.codecool.enterprise.avatar.service;
+package com.codecool.enterprise.workout.service;
 
-import com.codecool.enterprise.avatar.model.Day;
-import com.codecool.enterprise.avatar.model.Exercise;
-import com.codecool.enterprise.avatar.model.Workout;
-import com.codecool.enterprise.avatar.repository.WorkoutRepository;
+import com.codecool.enterprise.workout.model.Day;
+import com.codecool.enterprise.workout.model.Exercise;
+import com.codecool.enterprise.workout.model.Workout;
+import com.codecool.enterprise.workout.repository.WorkoutRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
