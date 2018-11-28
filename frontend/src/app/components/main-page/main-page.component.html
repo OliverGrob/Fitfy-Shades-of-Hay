@@ -1,7 +1,8 @@
 <div>
   <h1>Dirr geco!!</h1>
   <input #searchNutirent>
-  <button (click)="calculateNutrients(searchNutirent.value)">Muta</button>
+  <input #nutrientServing>
+  <button (click)="calculateNutrients(searchNutirent.value, nutrientServing.value)">Muta</button>
   <div>
     <label *ngFor="let nutrient of nutrition">
       {{ nutrient.foodName }}
@@ -28,6 +29,16 @@
       {{ gym.zipCode }}
       {{ gym.address }}
       {{ gym.url }}
+    </label>
+  </div>
+  <div>
+    <label *ngFor="let workout of workouts">
+      {{ workout.name }}
+      {{ workout.day}}
+      {{ workout.description }}
+      <label *ngFor="let excercise of workout.excercises">
+        {{ excercise }}
+      </label>
     </label>
   </div>
 </div>

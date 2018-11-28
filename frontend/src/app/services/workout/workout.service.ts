@@ -1,25 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 
-import { Observable } from "rxjs/internal/Observable";
-import { catchError, tap } from 'rxjs/operators';
 import { of } from "rxjs/internal/observable/of";
-
-import { Nutrient } from "../../models/Nutrient";
+import { catchError, tap } from "rxjs/operators";
+import { Observable } from "rxjs/internal/Observable";
+import {Workout} from "../../models/Workout";
 
 @Injectable({
   providedIn: 'root'
 })
-export class NutrientService {
+export class WorkoutService {
 
-  private baseNutritionUrl = 'http://localhost:60001/nutrition';
+  private baseWorkoutUrl = 'http://localhost:60002/workout';
 
   constructor(private http: HttpClient) { }
 
-  calculateNutrients(meal: string, serving: string): Observable<Nutrient[]> {
-    return this.http.post<any>(`${this.baseNutritionUrl}`, {'meal': meal, 'serving': serving})
+  getWorkout(): Observable<Workout[]> {
+    return this.http.get<any>(`${this.baseWorkoutUrl}`)
       .pipe(
-        tap(_ => console.log(`Nutrients found`)),
+        tap(_ => console.log(`Workouts found`)),
         catchError(response => this.handleError(response))
       );
   }
