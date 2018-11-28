@@ -1,6 +1,5 @@
 package com.codecool.enterprise.workout.model;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Workout {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,22 +21,18 @@ public class Workout {
     private String name;
 
     @Column(nullable = false)
-    private String description;
-
-    @ElementCollection(targetClass = Exercise.class)
-    @Enumerated(EnumType.STRING)
-    private List<Exercise> exercises;
+    private int height;
 
     @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Day day;
+    private int weight;
 
-    public Workout(String name, String description, List<Exercise> exercises, Day day) {
+    @ElementCollection(targetClass = Workout.class)
+    private List<Workout> workouts;
+
+    public User(String name, int height, int weight, List<Workout> workouts) {
         this.name = name;
-        this.description = description;
-        this.exercises = exercises;
-        this.day = day;
+        this.height = height;
+        this.weight = weight;
+        this.workouts = workouts;
     }
-
-
 }
