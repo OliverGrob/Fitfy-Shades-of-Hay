@@ -11,7 +11,9 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -41,5 +43,9 @@ public class WorkoutService {
         Workout newWorkout = new Workout(name, description, trainings, day);
 
         repository.save(newWorkout);
+    }
+
+    public List<Exercise> getExerciseList() {
+        return Arrays.asList(Exercise.values());
     }
 }
