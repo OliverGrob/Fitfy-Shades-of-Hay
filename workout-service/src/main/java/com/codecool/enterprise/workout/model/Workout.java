@@ -1,11 +1,16 @@
 package com.codecool.enterprise.workout.model;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -24,18 +29,29 @@ public class Workout {
     @Column(nullable = false)
     private String description;
 
-    @ElementCollection(targetClass = Exercise.class)
-    @Enumerated(EnumType.STRING)
-    private List<Exercise> exercises;
+
+//    @ElementCollection
+//    @CollectionTable(name = "exercise")
+//    @MapKeyColumn(name = "exercise_col")
+//    @MapKeyEnumerated(EnumType.STRING)
+//    @Column(name = "repetition_col")
+//    private Map<Exercise, Integer> exercises = new HashMap<>();
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @Column(nullable = false)
+    @ToString.Exclude
+    @JsonManagedReference
+    private List<Training> trainings = new ArrayList<>();
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Day day;
 
-    public Workout(String name, String description, List<Exercise> exercises, Day day) {
+    public Workout(String name, String description, List<Training> trainings, Day day) {
         this.name = name;
         this.description = description;
-        this.exercises = exercises;
+        this.trainings = trainings;
         this.day = day;
     }
 
