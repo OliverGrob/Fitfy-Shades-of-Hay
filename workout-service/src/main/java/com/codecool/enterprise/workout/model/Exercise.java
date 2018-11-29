@@ -6,9 +6,6 @@ public enum Exercise {
     PLANKING,
     CRUNCHES,
     SITUPS,
-    WALKING,
-    RUNNING,
-    CYCLING,
     INTERVAL,
     LUNGES,
 }
