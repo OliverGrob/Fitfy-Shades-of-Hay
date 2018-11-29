@@ -17,6 +17,7 @@ export class MainPageComponent implements OnInit {
   nutrition: Nutrient[] = [];
   gyms: Gym[] = [];
   workouts: Workout[] = [];
+  show: boolean = false;
 
   constructor(private nutrientService: NutrientService,
               private gymService: GymService,
@@ -54,12 +55,24 @@ export class MainPageComponent implements OnInit {
       .subscribe(workouts => {
         console.log(workouts);
         this.workouts = workouts;
+        this.show = true;
       });
   }
 
   addWorkout(name: string, description: string, exercises: string[], day: string) {
     this.workoutService.addWorkout(name, description, exercises, day)
       .subscribe();
+  }
+
+  haveValue(): boolean {
+    return this.gyms.length != 0 || this.workouts.length != 0 || this.nutrition.length != 0;
+  }
+
+  getExercises() {
+    this.workoutService.getExercises()
+      .subscribe(exercises => {
+        return exercises
+      });
   }
 
 }
