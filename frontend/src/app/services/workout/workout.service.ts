@@ -24,6 +24,16 @@ export class WorkoutService {
       );
   }
 
+  addWorkout(name: string, description: string, exercises: string[], day: string): Observable<any> {
+    console.log(exercises);
+    return this.http.post<any>(`${this.baseWorkoutUrl}`,
+      {'name': name, 'description': description, 'exercises': exercises, 'day': day})
+      .pipe(
+        tap(_ => console.log(`Workout added`)),
+        catchError(response => this.handleError(response))
+      );
+  }
+
   private handleError<T> (error: HttpErrorResponse, result?: T) {
     console.error(error);
     console.error(error.error['error']);
