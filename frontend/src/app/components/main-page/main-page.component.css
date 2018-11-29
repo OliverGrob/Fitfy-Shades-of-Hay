@@ -1,0 +1,16 @@
+.serving-input {
+  width: 50%;
+  float: right;
+}
+
+.card {
+  height: 15%;
+}
+
+.fas {
+  float: right;
+}
+
+.card-header {
+  background: lightblue;
+}
