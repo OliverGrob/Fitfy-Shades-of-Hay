@@ -27,7 +27,7 @@ public class WorkoutController {
     }
 
     @GetMapping("workout/exercises")
-    public Exercise[] getExercises() {
-        return Exercise.values();
+    public List<Exercise> getExercises() {
+        return service.getExerciseList();
     }
 }
