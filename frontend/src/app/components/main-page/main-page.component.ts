@@ -41,12 +41,25 @@ export class MainPageComponent implements OnInit {
       });
   }
 
+  findGymsByDistrict(district: string) {
+    this.gymService.findGymsByDistrict(district)
+      .subscribe(gyms => {
+        console.log(gyms);
+        this.gyms = gyms;
+      });
+  }
+
   getWorkouts() {
     this.workoutService.getWorkout()
       .subscribe(workouts => {
         console.log(workouts);
         this.workouts = workouts;
       });
+  }
+
+  addWorkout(name: string, description: string, exercises: string[], day: string) {
+    this.workoutService.addWorkout(name, description, exercises, day)
+      .subscribe();
   }
 
 }
