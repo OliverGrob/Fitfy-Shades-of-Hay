@@ -1,63 +1,4 @@
 <div>
-  <div>
-    <label *ngFor="let nutrient of nutrition">
-      Food name:
-      {{ nutrient.food_name }}
-      Serving quantity:
-      {{ nutrient.serving_qty }}
-      Serving weight in grams:
-      {{ nutrient.serving_weight_grams }}
-      Calories:
-      {{ nutrient.nf_calories }}
-      Total fat:
-      {{ nutrient.nf_total_fat }}
-      Saturated fat:
-      {{ nutrient.nf_saturated_fat }}
-      Cholesterol:
-      {{ nutrient.nf_cholesterol }}
-      Sodium:
-      {{ nutrient.nf_sodium }}
-      Carbohydrate:
-      {{ nutrient.nf_total_carbohydrate }}
-      Fiber:
-      {{ nutrient.nf_dietary_fiber }}
-      Sugar:
-      {{ nutrient.nf_sugars }}
-      Protein:
-      {{ nutrient.nf_protein }}
-      Potassium:
-      {{ nutrient.nf_potassium }}
-    </label>
-  </div>
-  <div>
-    <div *ngFor="let gym of gyms">
-      Gym name:
-      {{ gym.name }}
-      City:
-      {{ gym.city }}
-      Zip code:
-      {{ gym.zipCode }}
-      Address:
-      {{ gym.address }}
-      Web page:
-      {{ gym.url }}
-    </div>
-  </div>
-  <div>
-    <button (click)="getWorkouts()">Get workouts</button>
-    <div *ngFor="let workout of workouts">
-      Workout:
-      {{ workout.name }}
-      Day:
-      {{ workout.day}}
-      Description:
-      {{ workout.description }}
-      Exercises:
-      <label *ngFor="let exercise of workout.exercises">
-        {{ exercise }}
-      </label>
-    </div>
-  </div>
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
@@ -92,7 +33,7 @@
     <div class="row">
 
       <!-- Blog Entries Column -->
-      <div class="col-md-8">
+      <div [ngClass]="haveValue() ? 'col-md-6' : 'col-md-8'">
 
         <h1 class="my-4">Top Posts
           <small>From Food and Fitness</small>
@@ -147,7 +88,7 @@
       </div>
 
       <!-- Sidebar Widgets Column -->
-      <div class="col-md-4">
+      <div [ngClass]="haveValue() ? 'col-md-6' : 'col-md-4'">
 
         <!-- Search Widget -->
         <div class="card my-4">
@@ -156,15 +97,29 @@
             <div class="input-group">
               <input #searchGyms type="text" class="form-control" placeholder="Search for nearby gyms...">
               <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="button" (click)="findGyms(searchGyms.value)">Search</button>
-                </span>
+                  <button class="btn btn-secondary" type="button" (click)="findGymsByDistrict(searchGyms.value)">Search</button>
+              </span>
+            </div>
+            <div>
+              <div *ngFor="let gym of gyms">
+                <p>
+                  {{ gym.name }}
+                </p>
+                <p>
+                  {{ gym.city }}
+                  {{ gym.zipCode }}
+                  {{ gym.address }}
+                </p>
+                <a href="{{ gym.url }}">{{ gym.url }}</a>
+                <hr>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- Categories Widget -->
         <div class="card my-4">
-          <h5 class="card-header">Nutrtion Calculator <i class="fas fa-utensils"></i></h5>
+          <h5 class="card-header">Nutrition Calculator <i class="fas fa-utensils"></i></h5>
           <div class="card-body">
             <div class="nutrition-input input-group">
               <!--<input #searchNutirent type="text" class="form-control" placeholder="Calculate a meal's nutritions...">-->
@@ -177,17 +132,109 @@
                     (click)="calculateNutrients(searchNutirent.value, nutrientServing.value)">Calculate</button>
               </span>
             </div>
+            <div *ngIf="nutrition.length !== 0">
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th scope="col">Nutrition</th>
+                    <th scope="col">#</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Food name</th>
+                    <td>{{ nutrition[nutrition.length - 1].food_name }}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Serving quantity</th>
+                    <td>{{ nutrition[nutrition.length - 1].serving_qty }}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Serving weight in grams</th>
+                    <td>{{ nutrition[nutrition.length - 1].serving_weight_grams }} g</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Calories</th>
+                    <td>{{ nutrition[nutrition.length - 1].nf_calories }} g</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Total fat</th>
+                    <td>{{ nutrition[nutrition.length - 1].nf_total_fat }} g</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Saturated fat</th>
+                    <td>{{ nutrition[nutrition.length - 1].nf_saturated_fat }} g</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Cholesterol</th>
+                    <td>{{ nutrition[nutrition.length - 1].nf_cholesterol }} g</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Sodium</th>
+                    <td>{{ nutrition[nutrition.length - 1].nf_sodium }} g</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Carbohydrate</th>
+                    <td>{{ nutrition[nutrition.length - 1].nf_total_carbohydrate }} g</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Fiber</th>
+                    <td>{{ nutrition[nutrition.length - 1].nf_dietary_fiber }} g</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Sugar</th>
+                    <td>{{ nutrition[nutrition.length - 1].nf_sugars }} g</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Protein</th>
+                    <td>{{ nutrition[nutrition.length - 1].nf_protein }} g</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Potassium</th>
+                    <td>{{ nutrition[nutrition.length - 1].nf_potassium }} g</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="card my-4">
+          <h5 class="card-header">Add Workout<i class="fas fa-football-ball"></i></h5>
+          <div class="card-body">
+            <div class="workout-input input-group">
+              <div *ngFor="let exercise of getExercises()">
+                <input #exercise type="checkbox" class="form-control">{{ exercise.name | lowercase }}
+                <input #repetition type="number" class="form-control">{{ exercise.repetition }}
+              </div>
+              <span class="input-group-btn">
+                  <button class="btn btn-secondary" type="button"
+                          (click)="getWorkouts()">Get my workouts
+                  </button>
+              </span>
+            </div>
           </div>
         </div>
 
         <!-- Side Widget -->
-        <div class="card my-4">
-          <h5 class="card-header">Side Widget<i class="fas fa-football-ball"></i></h5>
+        <div *ngIf="show" class="card my-4">
+          <h5 class="card-header">My Workouts<i class="fas fa-football-ball"></i></h5>
           <div class="card-body">
-            You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+            <div *ngFor="let workout of workouts">
+              <p>
+                {{ workout.name }}
+              </p>
+              <p>
+                <!--{{ workout.description }}-->
+                {{ workout.day | lowercase }}
+              </p>
+              <label *ngFor="let exercise of workout.exercises">
+                {{ exercise.name }}
+              </label>
+              <hr>
+            </div>
           </div>
         </div>
-
       </div>
 
     </div>

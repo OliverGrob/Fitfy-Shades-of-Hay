@@ -4,7 +4,7 @@
 }
 
 .card {
-  height: 15%;
+  height: 12%;
 }
 
 .fas {
@@ -13,4 +13,8 @@
 
 .card-header {
   background: lightblue;
+}
+
+.card {
+  overflow-y: auto;
 }

@@ -6,6 +6,7 @@ import { catchError, tap } from "rxjs/operators";
 import { Observable } from "rxjs/internal/Observable";
 
 import { Workout } from "../../models/Workout";
+import {Exercise} from "../../models/Exercise";
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,14 @@ export class WorkoutService {
       {'name': name, 'description': description, 'exercises': exercises, 'day': day})
       .pipe(
         tap(_ => console.log(`Workout added`)),
+        catchError(response => this.handleError(response))
+      );
+  }
+
+  getExercises(): Observable<Exercise[]> {
+    return this.http.get<any>(`${this.baseWorkoutUrl}/exercises`)
+      .pipe(
+        tap(_ => console.log(`Exercises added`)),
         catchError(response => this.handleError(response))
       );
   }
