@@ -2,10 +2,7 @@ package com.codecool.enterprise.workout.model;
 
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -28,14 +25,6 @@ public class Workout {
 
     @Column(nullable = false)
     private String description;
-
-
-//    @ElementCollection
-//    @CollectionTable(name = "exercise")
-//    @MapKeyColumn(name = "exercise_col")
-//    @MapKeyEnumerated(EnumType.STRING)
-//    @Column(name = "repetition_col")
-//    private Map<Exercise, Integer> exercises = new HashMap<>();
 
     @OneToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)

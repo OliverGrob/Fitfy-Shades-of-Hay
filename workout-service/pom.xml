@@ -4,15 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>Workout</groupId>
-    <artifactId>Workout</artifactId>
+    <groupId>com.codecool.enterprise.workout</groupId>
+    <artifactId>workout-service</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Workout</name>
 
     <properties>
         <version.java>1.8</version.java>
         <version.postgres>42.1.1</version.postgres>
-        <version.junit>4.11</version.junit>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
@@ -51,12 +49,6 @@
             <artifactId>spring-boot-starter-data-rest</artifactId>
         </dependency>
 
-        <!-- JSON Web Token Support -->
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>0.7.0</version>
-        </dependency>
 
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -70,7 +62,6 @@
             <version>2.8.5</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -91,6 +82,13 @@
             <scope>test</scope>
             <version>2.0.4.RELEASE</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>1.7.1</version>
+        </dependency>
+
 
     </dependencies>
 </project>
