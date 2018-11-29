@@ -24,6 +24,14 @@ export class GymService {
       );
   }
 
+  findGymsByDistrict(district: string): Observable<Gym[]> {
+    return this.http.get<any>(`${this.baseGymUrl}/search-by-district?district=${district}`)
+      .pipe(
+        tap(_ => console.log(`Gyms found`)),
+        catchError(response => this.handleError(response))
+      );
+  }
+
   private handleError<T> (error: HttpErrorResponse, result?: T) {
     console.error(error);
     console.error(error.error['error']);

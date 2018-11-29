@@ -19,4 +19,8 @@ public class GymController {
         return service.findGymByName(substring);
     }
 
+    @GetMapping("/search-by-district")
+    public List<Gym> getGymByDistrict(@RequestParam("district") String district) {
+        return service.findGymByDistrict(district);
+    }
 }
