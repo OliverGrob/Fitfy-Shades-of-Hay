@@ -6,6 +6,7 @@ import { Gym } from "../../models/Gym";
 import { GymService } from "../../services/gym/gym.service";
 import { Workout } from "../../models/Workout";
 import { WorkoutService } from "../../services/workout/workout.service";
+import { Exercise } from "../../models/Exercise";
 
 @Component({
   selector: 'app-main-page',
@@ -18,12 +19,15 @@ export class MainPageComponent implements OnInit {
   gyms: Gym[] = [];
   workouts: Workout[] = [];
   show: boolean = false;
+  exercises: Exercise[] = [];
+  selectedExercises: Exercise[] = [];
 
   constructor(private nutrientService: NutrientService,
               private gymService: GymService,
               private workoutService: WorkoutService) { }
 
   ngOnInit() {
+    this.getExercises();
   }
 
   calculateNutrients(nutrient: string, serving: string) {
@@ -59,7 +63,7 @@ export class MainPageComponent implements OnInit {
       });
   }
 
-  addWorkout(name: string, description: string, exercises: string[], day: string) {
+  addWorkout(name: string, description: string, exercises: Exercise[], day: string) {
     this.workoutService.addWorkout(name, description, exercises, day)
       .subscribe();
   }
@@ -71,8 +75,30 @@ export class MainPageComponent implements OnInit {
   getExercises() {
     this.workoutService.getExercises()
       .subscribe(exercises => {
-        return exercises
+        console.log(exercises);
+        this.exercises = exercises;
       });
+  }
+
+  clicked(exercise: Exercise, repetition) {
+    console.log(exercise + ' added');
+    exercise.repetition = repetition;
+    if (this.selectedExercises.includes(exercise)) {
+      this.selectedExercises = this.selectedExercises.filter(currentId => currentId !== exercise);
+      return;
+    }
+
+    this.selectedExercises.push(exercise);
+    console.log(this.selectedExercises);
+  }
+
+  sendWorkout() {
+    this.workoutService.addWorkout('Dirr', 'Fuck this', this.selectedExercises, 'Monday')
+      .subscribe();
+  }
+
+  alreadyChecked(exercise): boolean {
+    return this.selectedExercises.includes(exercise);
   }
 
 }

@@ -18,3 +18,19 @@
 .card {
   overflow-y: auto;
 }
+
+.repetition {
+  display: inline-block;
+  width: 20%;
+}
+
+.far {
+  display: inline-block;
+  font-size: 150%;
+  padding-left: 15%;
+}
+
+.btn {
+  /*float: right;*/
+  margin: 1%;
+}

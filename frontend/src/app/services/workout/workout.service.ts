@@ -25,7 +25,7 @@ export class WorkoutService {
       );
   }
 
-  addWorkout(name: string, description: string, exercises: string[], day: string): Observable<any> {
+  addWorkout(name: string, description: string, exercises: Exercise[], day: string): Observable<any> {
     console.log(exercises);
     return this.http.post<any>(`${this.baseWorkoutUrl}`,
       {'name': name, 'description': description, 'exercises': exercises, 'day': day})
