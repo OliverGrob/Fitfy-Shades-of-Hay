@@ -1,11 +1,11 @@
-import { Exercise } from "./Exercise";
+import { Training } from "./Training";
 
 export class Workout {
 
   id: number;
   name: string;
   description: string;
-  exercises: Exercise[];
+  trainings: Training[];
   day: string;
 
 }

@@ -15,6 +15,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class WorkoutService {
@@ -26,12 +27,12 @@ public class WorkoutService {
         return this.repository.findAll();
     }
 
-    public void saveWorkout(String workout) {
+    public void saveWorkout(Map<String, Object> workout) {
         JSONObject jsonObject = new JSONObject(workout);
         String name = jsonObject.get("name").toString();
         String description = jsonObject.get("description").toString();
         List<Training> trainings = new ArrayList<>();
-        JSONArray trainingArray = jsonObject.getJSONArray("trainings");
+        JSONArray trainingArray = jsonObject.getJSONArray("exercises");
 
         for (int i = 0; i < trainingArray.length(); i++) {
             JSONObject training = trainingArray.getJSONObject(i);

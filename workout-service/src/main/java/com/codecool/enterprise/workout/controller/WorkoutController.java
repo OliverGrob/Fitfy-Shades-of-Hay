@@ -20,13 +20,11 @@ public class WorkoutController {
 
     @GetMapping("/workout")
     public List<Workout> getWorkouts() {
-        List<Workout> workouts = service.getAllWorkouts();
-        return workouts;
+        return service.getAllWorkouts();
     }
 
     @PostMapping("/workout")
-    public void saveWorkout(@RequestBody Map<String, String> workout) {
-        System.out.println(workout);
+    public void saveWorkout(@RequestBody Map<String, Object> workout) {
         service.saveWorkout(workout);
     }
 

@@ -155,7 +155,7 @@
                   </tr>
                   <tr>
                     <th scope="row">Calories</th>
-                    <td>{{ nutrition[nutrition.length - 1].nf_calories }} g</td>
+                    <td>{{ nutrition[nutrition.length - 1].nf_calories }}</td>
                   </tr>
                   <tr>
                     <th scope="row">Total fat</th>
@@ -238,9 +238,10 @@
                 <!--{{ workout.description }}-->
                 {{ workout.day | lowercase }}
               </p>
-              <label *ngFor="let exercise of workout.exercises">
+              <div *ngFor="let exercise of workout.trainings">
                 {{ exercise.name }}
-              </label>
+                {{ exercise.repetition }}
+              </div>
               <hr>
             </div>
           </div>
