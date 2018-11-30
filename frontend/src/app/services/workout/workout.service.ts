@@ -6,7 +6,7 @@ import { catchError, tap } from "rxjs/operators";
 import { Observable } from "rxjs/internal/Observable";
 
 import { Workout } from "../../models/Workout";
-import {Exercise} from "../../models/Exercise";
+import {Training} from "../../models/Training";
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +25,7 @@ export class WorkoutService {
       );
   }
 
-  addWorkout(name: string, description: string, exercises: Exercise[], day: string): Observable<any> {
+  addWorkout(name: string, description: string, exercises: Training[], day: string): Observable<any> {
     console.log(exercises);
     return this.http.post<any>(`${this.baseWorkoutUrl}`,
       {'name': name, 'description': description, 'exercises': exercises, 'day': day})
@@ -35,7 +35,7 @@ export class WorkoutService {
       );
   }
 
-  getExercises(): Observable<Exercise[]> {
+  getExercises(): Observable<Training[]> {
     return this.http.get<any>(`${this.baseWorkoutUrl}/exercises`)
       .pipe(
         tap(_ => console.log(`Exercises added`)),

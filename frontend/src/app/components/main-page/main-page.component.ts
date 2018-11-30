@@ -6,7 +6,7 @@ import { Gym } from "../../models/Gym";
 import { GymService } from "../../services/gym/gym.service";
 import { Workout } from "../../models/Workout";
 import { WorkoutService } from "../../services/workout/workout.service";
-import { Exercise } from "../../models/Exercise";
+import { Training } from "../../models/Training";
 
 @Component({
   selector: 'app-main-page',
@@ -19,8 +19,8 @@ export class MainPageComponent implements OnInit {
   gyms: Gym[] = [];
   workouts: Workout[] = [];
   show: boolean = false;
-  exercises: Exercise[] = [];
-  selectedExercises: Exercise[] = [];
+  exercises: Training[] = [];
+  selectedExercises: Training[] = [];
 
   constructor(private nutrientService: NutrientService,
               private gymService: GymService,
@@ -63,7 +63,7 @@ export class MainPageComponent implements OnInit {
       });
   }
 
-  addWorkout(name: string, description: string, exercises: Exercise[], day: string) {
+  addWorkout(name: string, description: string, exercises: Training[], day: string) {
     this.workoutService.addWorkout(name, description, exercises, day)
       .subscribe();
   }
@@ -80,9 +80,9 @@ export class MainPageComponent implements OnInit {
       });
   }
 
-  clicked(exercise: Exercise, repetition) {
+  clicked(exercise: Training, repetition) {
     console.log(exercise + ' added');
-    exercise.repetition = repetition;
+    exercise.repetition = 10;
     if (this.selectedExercises.includes(exercise)) {
       this.selectedExercises = this.selectedExercises.filter(currentId => currentId !== exercise);
       return;
@@ -93,7 +93,7 @@ export class MainPageComponent implements OnInit {
   }
 
   sendWorkout() {
-    this.workoutService.addWorkout('Dirr', 'Fuck this', this.selectedExercises, 'Monday')
+    this.workoutService.addWorkout('Dirr', 'Fuck this', this.selectedExercises, 'MONDAY')
       .subscribe();
   }
 
