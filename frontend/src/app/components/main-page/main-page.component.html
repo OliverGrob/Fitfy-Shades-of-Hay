@@ -203,9 +203,19 @@
           <h5 class="card-header">Add Workout<i class="fas fa-football-ball"></i></h5>
           <div class="card-body">
             <div class="workout-input input-group">
-              <div *ngFor="let exercise of getExercises()">
-                <input #exercise type="checkbox" class="form-control">{{ exercise.name | lowercase }}
-                <input #repetition type="number" class="form-control">{{ exercise.repetition }}
+              <div>
+                <div *ngFor="let exercise of exercises">
+                  <input #repetition type="number" class="form-control repetition">
+                  <label [ngClass]="alreadyChecked(exercise) ? 'checked far fa-check-square' : 'far fa-square'"
+                         (click)="clicked(exercise, repetition.value)">
+                    {{ exercise.name | lowercase }}
+                  </label>
+                  <!--<input #exercise type="checkbox">-->
+                  <!--<input #repetition type="number">-->
+                </div>
+                <button class="btn btn-secondary" type="button"
+                        (click)="sendWorkout()">Add workout
+                </button>
               </div>
               <span class="input-group-btn">
                   <button class="btn btn-secondary" type="button"
